@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concord — Áudio e tela P2P, sem servidor de mídia</title>
+  <meta name="description" content="Concord é um app desktop de áudio ao vivo e transmissão de tela, estilo Discord, com arquitetura P2P em mesh — sem servidor central de mídia." />
+  <link rel="icon" type="image/png" href="assets/images/logoConcord.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav__row">
+      <a href="#top" class="nav__brand">
+        <img src="assets/images/logoConcord.png" alt="Concord" class="nav__logo" />
+        Concord
+      </a>
+      <nav class="nav__links">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#arquitetura">Arquitetura</a>
+        <a href="#alpha">Fase alpha</a>
+      </nav>
+      <a href="#alpha" class="btn btn--ghost nav__cta">Entrar na alpha</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="container hero__stack">
+        <div class="hero__media">
+          <img src="assets/images/logoConcord.png" alt="Concord" class="hero__logo" />
+          <div class="hero__image-group">
+            <img src="assets/images/inicialConcord.png" alt="Concord" class="hero__image" />
+            <button type="button" class="btn btn--primary hero__download">
+              Download
+            </button>
+          </div>
+        </div>
+        <p class="eyebrow hero__eyebrow">Experimental &middot; P2P &middot; sem intermediário</p>
+        <div class="hero__copy">
+          <h1>Chame a galera sem passar sua voz por um servidor de ninguém.</h1>
+          <p class="hero__lead">
+            Concord é um app de áudio ao vivo e transmissão de tela, estilo Discord —
+            mas peer-to-peer de verdade. Sua voz e sua tela vão direto para quem está
+            na chamada, em malha (mesh), sem host retransmitindo mídia.
+          </p>
+          <div class="hero__actions">
+            <a href="#alpha" class="btn btn--primary">Quero testar na alpha</a>
+            <a href="#arquitetura" class="btn btn--outline">Ver a arquitetura</a>
+          </div>
+          <ul class="hero__stats">
+            <li><strong>10</strong><span>usuários por sala</span></li>
+            <li><strong>0</strong><span>servidores de mídia</span></li>
+            <li><strong>&infin;</strong><span>transmissores simultâneos</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="section">
+      <div class="container">
+        <h2>Como funciona</h2>
+        <p class="section__lead">Três peças simples, cada uma fazendo só o que precisa fazer.</p>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">01</span>
+            <h3>Sinalização, não mídia</h3>
+            <p>Um servidor leve troca SDP/ICE, gerencia salas e autorização. Ele nunca vê nem retransmite sua voz ou sua tela.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">02</span>
+            <h3>Conexão direta em mesh</h3>
+            <p>Cada participante se conecta diretamente aos outros via WebRTC. Áudio em mesh puro; tela sai direto do transmissor para cada espectador.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">03</span>
+            <h3>Host migra, chamada não cai</h3>
+            <p>O host é só quem coordena a sala. Se ele cair, outro candidato assume em segundos — suas conexões de áudio e tela seguem intactas.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="recursos" class="section section--alt">
+      <div class="container">
+        <h2>Recursos</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Múltiplos transmissores</h3>
+            <p>Mais de uma pessoa pode compartilhar tela ao mesmo tempo na mesma sala. A degradação de banda fica isolada em quem assiste, sem cascata para os demais.</p>
+          </article>
+          <article class="card">
+            <h3>Cargos e permissões</h3>
+            <p>Dono, admin, moderador e usuário — hierarquia clara por servidor inteiro, com ações como mutar, kick e timeout reservadas a quem tem autoridade.</p>
+          </article>
+          <article class="card">
+            <h3>Salas independentes</h3>
+            <p>Cada sala tem sua própria sessão mesh e eleição de host, isoladas das demais salas do mesmo servidor.</p>
+          </article>
+          <article class="card">
+            <h3>Login com Google</h3>
+            <p>Autenticação via Google OAuth com PKCE, token guardado no cofre nativo do sistema operacional — sem senha própria para vazar.</p>
+          </article>
+          <article class="card">
+            <h3>Convite e acesso permanente</h3>
+            <p>Autorização de acesso sobrevive a reconexões e só é revogada pelo dono do servidor.</p>
+          </article>
+          <article class="card">
+            <h3>App de verdade, não aba de navegador</h3>
+            <p>Cliente instalável em Electron — mesma base de Discord e WhatsApp Desktop — com captura de tela nativa do sistema.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="arquitetura" class="section">
+      <div class="container arch">
+        <div class="arch__copy">
+          <h2>Arquitetura, sem enrolação</h2>
+          <p class="section__lead">Decisões técnicas reais do projeto — não promessa de marketing.</p>
+          <dl class="specs">
+            <div class="specs__row">
+              <dt>Cliente</dt>
+              <dd>Electron (Chromium + Node.js), TypeScript</dd>
+            </div>
+            <div class="specs__row">
+              <dt>Mídia</dt>
+              <dd>WebRTC nativo (RTCPeerConnection), sem biblioteca de abstração</dd>
+            </div>
+            <div class="specs__row">
+              <dt>Sinalização</dt>
+              <dd>Node.js + WebSocket puro (<code>ws</code>)</dd>
+            </div>
+            <div class="specs__row">
+              <dt>STUN</dt>
+              <dd>Servidor público do Google, sem custo</dd>
+            </div>
+            <div class="specs__row">
+              <dt>TURN</dt>
+              <dd>Ainda não — decisão adiada para dados reais da fase alpha</dd>
+            </div>
+            <div class="specs__row">
+              <dt>Banco</dt>
+              <dd>DynamoDB (usuários, servidores, salas, cargos, logs)</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="arch__diagram" aria-hidden="true">
+          <div class="diagram">
+            <div class="diagram__box diagram__box--signal">Servidor de sinalização<br /><small>SDP / ICE / salas</small></div>
+            <div class="diagram__peers">
+              <div class="diagram__box diagram__box--peer">Peer A</div>
+              <div class="diagram__box diagram__box--peer">Peer B</div>
+              <div class="diagram__box diagram__box--peer">Peer C</div>
+            </div>
+            <p class="diagram__caption">Mídia sempre direta entre peers — o servidor nunca entra no caminho do áudio ou da tela.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="alpha" class="section section--cta">
+      <div class="container cta">
+        <h2>A fase alpha ainda não começou.</h2>
+        <p>
+          Vamos rodar com testadores reais, em redes diferentes, para medir a taxa real
+          de falha de conexão — sem achismo de mercado. Se quiser ser avisado quando
+          abrir, deixe seu contato.
+        </p>
+        <form class="cta__form" id="alpha-form">
+          <input type="email" name="email" placeholder="seu@email.com" required aria-label="Seu e-mail" />
+          <button type="submit" class="btn btn--primary">Avisar quando abrir</button>
+        </form>
+        <p class="cta__note" id="alpha-note" role="status"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <span>&copy; <span id="year"></span> Concord — projeto pessoal experimental.</span>
+      <span class="footer__muted">Sem servidor de mídia. Sem taxa. Sem drama.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
