@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-Command claude -ErrorAction SilentlyContinue)",
+      "PowerShell(claude --version)",
+      "Read(//c/Users/mozar/Desktop//**)",
+      "Read(//c/Users/mozar/Desktop/**)",
+      "Bash(mkdir -p \"/c/Users/mozar/AppData/Local/Temp/claude/c--Users-mozar-Documents-GitHub-concordProject/25103f9c-b315-4ece-9c7e-46f3be74167e/scratchpad/concord-skill-extract\")",
+      "Read(//c/Users/mozar/AppData/Local/Temp/claude/c--Users-mozar-Documents-GitHub-concordProject/25103f9c-b315-4ece-9c7e-46f3be74167e/scratchpad/**)",
+      "Bash(unzip -o \"/c/Users/mozar/Desktop/concord.skill\")",
+      "Bash(mkdir -p 'C:\\\\Users\\\\mozar/.claude/skills/concord')",
+      "Bash(cp /c/Users/mozar/AppData/Local/Temp/claude/c--Users-mozar-Documents-GitHub-concordProject/25103f9c-b315-4ece-9c7e-46f3be74167e/scratchpad/concord-skill-extract/concord/SKILL.md 'C:\\\\Users\\\\mozar/.claude/skills/concord/SKILL.md')",
+      "mcp__claude_ai_Google_Drive__download_file_content"
+    ]
+  }
+}
