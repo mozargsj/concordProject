@@ -1,0 +1,20 @@
+name = "concordproject"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+GITHUB_OWNER = "mozargsj"
+GITHUB_REPO = "concordProject"
+GITHUB_BRANCH = "main"
+GITHUB_FILE_PATH = "data/inscricoes-alpha.json"
+ALLOWED_ORIGINS = "https://concord.undersoft.tec.br"
+FROM_ADDRESS = "form@undersoft.tec.br"
+
+[[send_email]]
+name = "SEND_EMAIL"
+destination_address = "mozargsj@gmail.com"
+
+# Custom Domain configurado pelo dashboard da Cloudflare:
+# Workers & Pages > concordproject > Settings > Domains & Routes > Add Custom Domain > form.undersoft.tec.br
+# (cria o registo DNS automaticamente)
