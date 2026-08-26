@@ -17,6 +17,30 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+const downloadLink = document.querySelector(".hero__download");
+const downloadModal = document.getElementById("download-modal");
+const downloadModalClose = document.getElementById("download-modal-close");
+
+downloadLink.addEventListener("click", () => {
+  downloadModal.hidden = false;
+});
+
+downloadModalClose.addEventListener("click", () => {
+  downloadModal.hidden = true;
+});
+
+downloadModal.addEventListener("click", (event) => {
+  if (event.target === downloadModal) {
+    downloadModal.hidden = true;
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !downloadModal.hidden) {
+    downloadModal.hidden = true;
+  }
+});
+
 const form = document.getElementById("alpha-form");
 const note = document.getElementById("alpha-note");
 const ALPHA_FORM_ENDPOINT = "https://form.undersoft.tec.br/";
