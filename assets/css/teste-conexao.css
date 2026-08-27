@@ -156,3 +156,22 @@
   font-size: 0.85rem;
   margin: 20px 0 0;
 }
+
+.testpage__faq .card {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.testpage__faq .card h3 {
+  font-size: 1.1rem;
+}
+
+.testpage__faq .card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.testpage__faq .card p + p {
+  margin-top: 14px;
+}
+

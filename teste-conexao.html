@@ -97,6 +97,30 @@
       </div>
     </section>
 
+    <section class="section testpage__faq">
+      <div class="container">
+        <h2>Problemas frequentes</h2>
+        <div class="card">
+          <h3>O teste disse que minha rede está OK, mas o Concord ainda não conecta</h3>
+          <p>
+            Nesse caso o problema provavelmente não é a sua rede — é o Firewall do Windows
+            (ou um antivírus de terceiros, tipo Avast/Norton/Kaspersky) tratando o
+            <code>Concord.exe</code> de forma diferente de um navegador comum. Isso é mais
+            comum porque o instalador do Concord ainda não tem assinatura digital
+            (Authenticode), então alguns firewalls/antivírus são mais cautelosos com ele por
+            padrão.
+          </p>
+          <p>
+            O que conferir: abra o <strong>Firewall do Windows Defender</strong> &rarr;
+            <em>Permitir um aplicativo ou recurso pelo Firewall do Windows Defender</em> &rarr;
+            procure "Concord" na lista e confirme que as caixas <strong>Privada</strong> e
+            <strong>Pública</strong> estão marcadas. Se usa outro antivírus, veja as
+            configurações de firewall/proteção de rede dele também.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="section section--cta">
       <div class="container cta">
         <h2>Deu tudo certo?</h2>
