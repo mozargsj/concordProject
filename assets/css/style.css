@@ -209,6 +209,18 @@ code {
   margin-bottom: 44px;
 }
 
+.hero__pretest {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin: -24px 0 44px;
+}
+
+.hero__pretest a {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .hero__stats {
   display: flex;
   justify-content: center;

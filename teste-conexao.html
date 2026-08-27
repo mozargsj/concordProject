@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste sua rede — Concord</title>
+  <meta name="description" content="Teste se a sua rede consegue estabelecer conexão P2P (WebRTC) antes de baixar o Concord — leva alguns segundos, direto no navegador, sem instalar nada." />
+  <link rel="icon" type="image/png" href="assets/images/logoConcord.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/teste-conexao.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav__row">
+      <a href="index.html#top" class="nav__brand">
+        <img src="assets/images/logoConcord.png" alt="Concord" class="nav__logo" />
+        Concord
+      </a>
+      <nav class="nav__links">
+        <a href="index.html#como-funciona">Como funciona</a>
+        <a href="index.html#recursos">Recursos</a>
+        <a href="index.html#arquitetura">Arquitetura</a>
+        <a href="index.html#alpha">Fase alpha</a>
+      </nav>
+      <a href="index.html#alpha" class="btn btn--ghost nav__cta">Entrar na alpha</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="section testpage__intro">
+      <div class="container">
+        <p class="eyebrow">Antes de baixar</p>
+        <h1>Sua rede consegue conversar direto com outra pessoa?</h1>
+        <p class="section__lead">
+          O Concord é peer-to-peer de verdade — sua voz e sua tela vão direto para quem está
+          na chamada, sem passar por um servidor de mídia (ver <a href="index.html#arquitetura">arquitetura</a>).
+          Isso exige que sua rede consiga abrir uma conexão direta com outro computador. A
+          maioria das redes consegue sem problema, mas roteadores e firewalls mais restritivos
+          às vezes bloqueiam esse tipo de conexão. Esse teste confirma se a sua rede consegue,
+          usando o mesmo protocolo (WebRTC) que o Concord usa — direto no navegador, sem
+          instalar nada, sem sair da página.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container testpage__panel">
+        <div class="test-card">
+          <button type="button" class="btn btn--primary test-card__run" id="run-test">
+            Testar minha rede
+          </button>
+          <p class="test-card__hint" id="test-status">Clique para começar. Leva uns 10 segundos.</p>
+
+          <div class="test-card__result" id="test-result" hidden>
+            <div class="result-banner" id="result-banner"></div>
+            <p class="result-detail" id="result-detail"></p>
+          </div>
+
+          <details class="test-card__details" id="test-details" hidden>
+            <summary>Ver detalhes técnicos</summary>
+            <table class="candidate-table">
+              <thead>
+                <tr>
+                  <th>Tipo</th>
+                  <th>Protocolo</th>
+                  <th>Endereço</th>
+                </tr>
+              </thead>
+              <tbody id="candidate-rows"></tbody>
+            </table>
+          </details>
+        </div>
+
+        <div class="test-explain">
+          <h2>O que esse teste olha</h2>
+          <dl class="specs testpage__specs">
+            <div class="specs__row">
+              <dt>host</dt>
+              <dd>Seu endereço na rede local — sempre aparece, mesmo sem internet real. Sozinho não é suficiente.</dd>
+            </div>
+            <div class="specs__row">
+              <dt>srflx</dt>
+              <dd>Seu endereço público, descoberto via STUN. Se aparecer, sua rede consegue fazer a parte dela — bom sinal.</dd>
+            </div>
+            <div class="specs__row">
+              <dt>relay</dt>
+              <dd>Endereço de um servidor intermediário (TURN). O Concord ainda não usa TURN — ver <a href="index.html#arquitetura">arquitetura</a>.</dd>
+            </div>
+          </dl>
+          <p class="test-explain__note">
+            Esse teste roda só no seu navegador — nenhum dado sai da sua máquina, nenhum
+            resultado é enviado pra gente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--cta">
+      <div class="container cta">
+        <h2>Deu tudo certo?</h2>
+        <p>Se apareceu <code>srflx</code> na lista, sua rede está pronta.</p>
+        <a href="https://github.com/mozargsj/concordProject/releases/download/latest/Concord-Setup.exe" download class="btn btn--primary">
+          Baixar o Concord
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__row">
+      <span>&copy; <span id="year"></span> Concord — projeto pessoal experimental.</span>
+      <span class="footer__muted">Sem servidor de mídia. Sem taxa. Sem drama.</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/teste-conexao.js"></script>
+</body>
+</html>
