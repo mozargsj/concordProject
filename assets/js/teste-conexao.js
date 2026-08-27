@@ -85,7 +85,7 @@ async function runTest() {
     addRow(parsed);
   };
 
-  pc.onicegatheringstate = () => {
+  pc.onicegatheringstatechange = () => {
     if (pc.iceGatheringState === "complete") finish();
   };
 
